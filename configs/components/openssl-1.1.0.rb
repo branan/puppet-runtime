@@ -24,7 +24,7 @@ component 'openssl' do |pkg, settings, platform|
     pkg.environment 'PATH', "/opt/pl-build-tools/bin:$$PATH"
     pkg.environment 'CC', "/opt/pl-build-tools/bin/#{settings[:platform_triple]}-gcc"
 
-    cflags = "#{settings[:cflags]} -fPIC"
+    cflags = "#{settings[:cflags]} -fPIC -ggdb"
     ldflags = "-Wl,-rpath=/opt/pl-build-tools/#{settings[:platform_triple]}/lib -Wl,-rpath=#{settings[:libdir]} -L/opt/pl-build-tools/#{settings[:platform_triple]}/lib"
     target = if platform.architecture == 'aarch64'
                 'linux-aarch64'
